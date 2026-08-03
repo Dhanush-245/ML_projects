@@ -1,0 +1,15 @@
+# Data processing and visualization
+numpy==2.5.1
+pandas==3.0.5
+matplotlib==3.11.1
+seaborn==0.13.2
+
+# Machine learning
+scikit-learn==1.9.0
+# macOS also requires the system runtime: brew install libomp
+xgboost==3.3.0
+joblib==1.5.3
+
+# Notebook environment
+jupyterlab==4.6.2
+ipykernel==7.3.0
