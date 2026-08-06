@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated experiment artifacts
+results/
+*.keras
+*.h5
+
+# TensorFlow logs and local data
+logs/
+tensorboard/
+data/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
