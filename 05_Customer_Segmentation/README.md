@@ -1,4 +1,17 @@
-# Customer Segmentation with Unsupervised Learning
+<h1 align="center">Customer Segmentation with Unsupervised Learning</h1>
+
+<p align="center">
+  An end-to-end clustering study that turns customer behavior into actionable marketing segments.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/scikit--learn-clustering-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" alt="scikit-learn">
+  <img src="https://img.shields.io/badge/customers-200-8B5CF6?style=for-the-badge" alt="200 customers">
+  <img src="https://img.shields.io/badge/final%20segments-5-10B981?style=for-the-badge" alt="Five final segments">
+</p>
+
+## Overview
 
 An end-to-end customer segmentation study using the Mall Customers dataset. The project compares K-Means, hierarchical clustering, DBSCAN, and PCA-assisted K-Means, then translates the selected clusters into practical marketing segments.
 
@@ -27,6 +40,34 @@ DBSCAN has the highest raw silhouette score, but labels 11.5% of customers as no
 | Low Value | 23 | Low income and low spending |
 | Moderate | 81 | Mid-range income and spending |
 | Young High-Spending | 22 | Younger customers with strong spending |
+
+## Dataset
+
+The included Mall Customers dataset contains 200 customer records.
+
+| Feature | Description |
+|---|---|
+| `CustomerID` | Unique customer identifier |
+| `Gender` | Recorded customer gender |
+| `Age` | Customer age in years |
+| `Annual Income (k$)` | Annual income in thousands of dollars |
+| `Spending Score (1-100)` | Mall-assigned spending-behavior score |
+
+Clustering uses age, annual income, and spending score. `CustomerID` is retained only for traceability, and gender is available for descriptive analysis rather than distance calculation.
+
+## Workflow
+
+```text
+Data exploration
+      ↓
+Feature selection and standardization
+      ↓
+K-Means ─ Hierarchical ─ DBSCAN ─ PCA + K-Means
+      ↓
+Silhouette, coverage, and interpretability comparison
+      ↓
+Five final customer profiles and marketing strategies
+```
 
 ## Repository structure
 
@@ -81,14 +122,40 @@ Run the notebooks from the repository root in numerical order. They use reposito
 > [!NOTE]
 > Pickle/joblib files should only be loaded from trusted sources. Re-run the notebooks if your local scikit-learn version is incompatible with the committed artifacts.
 
-## Dataset
+## Technologies
 
-The included `Mall_Customers.csv` contains customer ID, gender, age, annual income (k$), and spending score. If you publish this repository, add the exact original dataset URL and license/usage terms here so other users can verify its provenance.
+- Python, NumPy, and pandas
+- scikit-learn and SciPy
+- Matplotlib and Seaborn
+- JupyterLab
+- Joblib model persistence
+
+## Business applications
+
+- Retention and loyalty campaigns for high-value customers
+- Re-engagement offers for high-income, low-spending customers
+- Affordable bundles for price-sensitive groups
+- Cross-selling for the largest moderate segment
+- Trend-led social campaigns for young, high-spending customers
+
+The segments describe this dataset and should be revalidated before using them for real customers. Production segmentation also requires privacy review, drift monitoring, and testing for unfair or harmful targeting.
 
 ## Reproducibility
 
 The notebooks use fixed random seeds where applicable. Exact plots or floating-point scores can vary slightly across library versions and platforms. Generated notebook outputs are retained so the analysis can be reviewed directly on GitHub.
 
+## Future improvements
+
+- Add cluster-stability analysis across resampled datasets
+- Build an interactive segment explorer with filters and profiles
+- Add recency, frequency, monetary value, and channel features
+- Package preprocessing and prediction into one reusable pipeline
+- Add model/data validation and automated notebook checks
+
 ## License
 
 No license has been selected. Add a `LICENSE` file before publishing if you want others to be able to reuse or modify the project legally.
+
+## Author
+
+**Lingareddy Dhanush** · [GitHub](https://github.com/Dhanush-245)

@@ -1,62 +1,128 @@
-# Handwritten Digit Recognition with TensorFlow and Keras
+<h1 align="center">MNIST Handwritten Digit Recognition</h1>
 
-This experiment trains the same multilayer perceptron on MNIST with six hidden-layer activation functions—ReLU, tanh, sigmoid, linear, exponential, and Leaky ReLU—and compares their test performance and training time.
+<p align="center">
+  A controlled TensorFlow experiment comparing six hidden-layer activation functions on the same neural-network architecture.
+</p>
 
-The verified notebook run achieved the best test accuracy with **Leaky ReLU: 98.61%**. Results can vary slightly across machines and TensorFlow versions.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10--3.12-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10–3.12">
+  <img src="https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow">
+  <img src="https://img.shields.io/badge/Keras-neural%20networks-D00000?style=for-the-badge&logo=keras&logoColor=white" alt="Keras">
+  <img src="https://img.shields.io/badge/best%20accuracy-98.61%25-10B981?style=for-the-badge" alt="Best test accuracy 98.61%">
+</p>
 
-## What the experiment produces
+## Overview
 
-- Accuracy, precision, recall, weighted F1 score, loss, and training time
-- Training and validation accuracy/loss plots
-- Confusion matrices and classification reports
-- Training-history JSON files
-- Best model checkpoints in Keras format
-- A CSV comparison table and final activation ranking
+This project trains the same multilayer perceptron on MNIST with **ReLU, tanh, sigmoid, linear, exponential, and Leaky ReLU** activations. Holding the dataset, architecture, optimizer, and training controls constant makes it possible to compare activation behavior more fairly.
 
-## Run locally
+The verified notebook run achieved its best test accuracy with **Leaky ReLU at 98.61%**. Exact values can vary slightly across machines and TensorFlow versions.
 
-Python 3.10–3.12 is recommended.
+## Dataset
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-jupyter lab
+MNIST contains 70,000 labeled grayscale images of handwritten digits from 0 through 9.
+
+| Split | Images | Shape | Classes |
+|---|---:|---|---:|
+| Training | 60,000 | 28 × 28 × 1 | 10 |
+| Test | 10,000 | 28 × 28 × 1 | 10 |
+
+Keras downloads the dataset automatically on the first notebook run. Pixel values are normalized before training, and labels are converted to categorical targets.
+
+## Experiment design
+
+```text
+28 × 28 image
+    ↓
+Flatten
+    ↓
+Dense(512) → BatchNorm → Activation → Dropout
+    ↓
+Dense(256) → BatchNorm → Activation → Dropout
+    ↓
+Dense(128) → BatchNorm → Activation → Dropout
+    ↓
+Dense(10, softmax)
 ```
 
-Open `Recognizing_HandWritten_Digits_dp.ipynb`, select the virtual-environment kernel, and run all cells in order. MNIST is downloaded automatically by Keras on the first run. Training all six models can take several minutes and creates a local `results/` directory.
+| Setting | Value |
+|---|---|
+| Optimizer | Adam |
+| Loss | Categorical cross-entropy |
+| Batch size | 128 |
+| Maximum epochs | 20 |
+| Controls | Early stopping and learning-rate reduction |
+| Random seed | 42 |
 
-## Experiment setup
+Exponential-activation inputs are clipped to `[-10, 10]` to avoid floating-point overflow.
 
-- Dataset: MNIST (60,000 training images and 10,000 test images)
-- Input: normalized 28 × 28 grayscale images
-- Network: Flatten → Dense(512) → Dense(256) → Dense(128) → Dense(10)
-- Regularization: batch normalization and dropout
-- Optimizer: Adam
-- Loss: categorical cross-entropy
-- Batch size: 128
-- Maximum epochs: 20, with early stopping and learning-rate reduction
-- Random seed: 42
-- Numerical safety: exponential inputs are clipped to [-10, 10] before exponentiation to prevent overflow
-
-## Saved-run summary
+## Results
 
 | Activation | Accuracy | Weighted F1 | Test loss |
 |---|---:|---:|---:|
-| Leaky ReLU | 0.9861 | 0.9861 | 0.0540 |
+| **Leaky ReLU** | **0.9861** | **0.9861** | **0.0540** |
 | ReLU | 0.9848 | 0.9848 | 0.0553 |
 | tanh | 0.9825 | 0.9825 | 0.0662 |
 | sigmoid | 0.9799 | 0.9799 | 0.0664 |
 | exponential | 0.9637 | 0.9637 | 0.3100 |
 | linear | 0.9252 | 0.9249 | 0.2707 |
 
-The exponential activation required bounded inputs to avoid floating-point overflow. Even after stabilization, its higher loss suggests less well-calibrated predictions than the leading activations. Accuracy alone is therefore not sufficient for comparing the models.
+Leaky ReLU and ReLU provide the strongest saved-run results. The exponential activation remains less stable and has substantially higher loss even after bounding its inputs. This illustrates why loss, class-level metrics, and training behavior matter alongside accuracy.
 
-## Repository notes
+## Generated analysis
 
-Generated models and result artifacts are ignored by Git because they are reproducible and model files can be large. The notebook retains the original saved outputs so the experiment results remain visible on GitHub.
+- Accuracy, precision, recall, weighted F1, loss, and training time
+- Training and validation learning curves
+- Confusion matrices and classification reports
+- Per-activation training-history JSON files
+- Best model checkpoints in Keras format
+- Final CSV comparison and activation ranking
+
+## Project structure
+
+```text
+.
+├── Recognizing_HandWritten_Digits_dp.ipynb
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+The local `results/` directory is generated by the notebook and intentionally ignored because the artifacts are reproducible and model files can be large. Saved notebook output remains visible on GitHub.
+
+## Installation and usage
+
+```bash
+git clone https://github.com/Dhanush-245/ML_projects.git
+cd ML_projects/04_MNIST
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+jupyter lab
+```
+
+Open `Recognizing_HandWritten_Digits_dp.ipynb`, select the virtual-environment kernel, and run all cells in order. Training all six models can take several minutes depending on available hardware.
+
+## Technologies
+
+- Python, NumPy, and pandas
+- TensorFlow and Keras
+- scikit-learn evaluation metrics
+- Matplotlib and Seaborn
+- JupyterLab
+
+## Future improvements
+
+- Compare the MLP with a compact convolutional neural network
+- Track confidence calibration and per-class error patterns
+- Add repeated runs and uncertainty intervals instead of one seed
+- Add TensorBoard experiment tracking
+- Export the best model behind a small digit-drawing web interface
 
 ## License
 
-No license has been selected. Add a license before inviting reuse or redistribution.
+No license has been selected. Add a license before permitting reuse or redistribution.
+
+## Author
+
+**Lingareddy Dhanush** · [GitHub](https://github.com/Dhanush-245)
