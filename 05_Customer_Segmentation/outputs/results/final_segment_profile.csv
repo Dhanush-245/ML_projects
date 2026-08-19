@@ -1,0 +1,6 @@
+Segment_Name,Customer_Count,Average_Age,Average_Income,Average_Spending,Recommended_Strategy
+High Income Low-Spending Customers,35,41.11,88.2,17.11,"Personalized promotions, premium product demonstrations and incentives to increase engagement."
+High Value Customers,39,32.69,86.54,82.13,"Premium offers, loyalty rewards, exclusive products and VIP programs."
+Low Value Customers,23,45.22,26.3,20.91,"Discount campaigns, affordable bundles and introductory offers."
+Moderate Customers,81,42.72,55.3,49.52,"Cross-selling, personalized recommendations and loyalty-building campaigns."
+Young High-Spending Customers,22,25.27,25.73,79.36,"Trendy products, personalized recommendations, social-media campaigns and limited-time offers."
