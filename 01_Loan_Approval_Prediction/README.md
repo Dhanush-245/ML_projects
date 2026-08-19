@@ -137,8 +137,8 @@ Loan_Approval_Prediction/
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Loan_Approval_Prediction.git
-cd Loan_Approval_Prediction
+git clone https://github.com/Dhanush-245/ML_projects.git
+cd ML_projects/01_Loan_Approval_Prediction
 
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
@@ -178,6 +178,6 @@ Distributed under the [MIT License](LICENSE).
 
 ## Author
 
-**Lingareddy Dhanush**
+**Lingareddy Dhanush** · [GitHub](https://github.com/Dhanush-245)
 
 If this project helped you, consider starring the repository.
