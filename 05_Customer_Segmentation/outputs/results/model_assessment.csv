@@ -1,0 +1,5 @@
+Algorithm,Silhouette,Coverage,Noise_Percentage
+K-Means,0.5546571631111091,1.0,0.0
+Hierarchical,0.5538089226688662,1.0,0.0
+DBSCAN,0.5577457478878458,0.885,0.115
+PCA + K-Means,0.5546571631100179,1.0,0.0

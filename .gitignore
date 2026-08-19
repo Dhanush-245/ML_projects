@@ -1,0 +1,43 @@
+# Operating-system and editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# JavaScript and frontend builds
+node_modules/
+.next/
+.vinext/
+.vite/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Local state, logs, and secrets
+.env
+.env.*
+!.env.example
+*.log
+*.db
+.wrangler/
+
+# Generated ML artifacts
+mlruns/
+tensorboard/

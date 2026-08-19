@@ -1,0 +1,4 @@
+Method,Silhouette_Score
+Original K-Means,0.5547
+PCA + K-Means (2 Components),0.5546571631100179
+PCA + K-Means (1 Component),0.5449697610824609
