@@ -37,6 +37,25 @@ Medora AI combines health scoring, risk signals, activity trends, care-plan adhe
 
 The current interface uses realistic fictional data for **Alex Rivera**. It does not process or store real medical records.
 
+## Machine-learning research track
+
+The repository now includes an executed, notebook-first disease-prediction research track. Milestone 1 uses the Pima Indians Diabetes dataset to establish a rigorous raw-data audit before cleaning or modeling.
+
+Open [Notebook 01](notebooks/01_Project_Setup_and_Data_Understanding.ipynb) to explore:
+
+- dataset provenance and SHA-256 verification;
+- schema, dimensions, types, ranges, duplicates, and target validation;
+- literal missing values versus physiologically implausible zero sentinels;
+- outcome balance, descriptive statistics, distributions, and correlations;
+- responsible-use limitations and leakage-safe decisions for Notebook 02.
+
+```bash
+python -m pip install -r requirements-ml.txt
+jupyter lab notebooks/01_Project_Setup_and_Data_Understanding.ipynb
+```
+
+The dataset snapshot is preserved unchanged under `datasets/diabetes/`, while reproducible plots are stored under `figures/notebook_01/`. See [ML_RESEARCH.md](ML_RESEARCH.md) for the execution and validation workflow.
+
 ## Architecture
 
 ```text
